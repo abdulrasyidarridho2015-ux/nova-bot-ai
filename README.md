@@ -1,2 +1,1 @@
-# nova-bot-ai
-gpp
+
