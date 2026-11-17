@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVA MULTI MEDIAFIRE LINK</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #07090e;
+            --bg-card: #0f172a;
+            --bg-card-hover: #1e293b;
+            --accent-green: #10b981;
+            --accent-blue: #3b82f6;
+            --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #1e293b;
+            --glow-blue: rgba(59, 130, 246, 0.25);
+            --glow-green: rgba(16, 185, 129, 0.25);
+            --danger: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 40%);
+        }
+
+        /* App Container (Mobile First Optimized) */
+        .app-container {
+            width: 100%;
+            max-width: 480px;
+            height: 100vh;
+            max-height: 950px;
+            background-color: var(--bg-base);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+            border-left: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        @media (min-width: 481px) {
+            .app-container {
+                height: 92vh;
+                border-radius: 24px;
+                border: 1px solid var(--border-color);
+            }
+        }
+
+        /* LOGIN SCREEN */
+        .login-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-base);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+            z-index: 1000;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .login-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(1.05);
+            display: none;
+        }
+
+        .login-card {
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .login-logo {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #fff;
+            box-shadow: 0 0 20px var(--glow-blue);
+            margin-bottom: 4px;
+        }
+
+        .login-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .login-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .error-msg {
+            color: var(--danger);
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            display: none;
+        }
+
+        /* Main App Wrapper */
+        .main-app-wrapper {
+            display: none;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+        }
+
+        .main-app-wrapper.active {
+            display: flex;
+        }
+
+        /* Top Header */
+        .app-header {
+            padding: 16px 20px;
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-primary);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #fff;
+            box-shadow: 0 0 12px var(--glow-blue);
+        }
+
+        .logo-text h1 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--text-main);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .logo-text span {
+            font-size: 0.65rem;
+            color: var(--accent-green);
+            font-weight: 500;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .role-badge {
+            font-size: 0.65rem;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+        }
+
+        .role-badge.admin {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-green);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .role-badge.guest {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent-blue);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .icon-btn {
+            background: var(--bg-card-hover);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.8rem;
+        }
+
+        .icon-btn:hover {
+            border-color: var(--danger);
+            color: var(--danger);
+        }
+
+        /* Content Area */
+        .content-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            scroll-behavior: smooth;
+        }
+
+        .content-area::-webkit-scrollbar {
+            width: 4px;
+        }
+        .content-area::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        /* Action Bar */
+        .action-bar {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            background: var(--gradient-primary);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 16px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.25);
+            flex: 1;
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+        .btn-secondary {
+            background: var(--bg-card-hover);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-green);
+        }
+
+        .btn-guest-login {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px dashed var(--border-color);
+            width: 100%;
+            margin-top: 4px;
+        }
+
+        .btn-guest-login:hover {
+            color: var(--text-main);
+            border-color: var(--accent-blue);
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        /* Card Item Style */
+        .download-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .download-card:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+
+        .card-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .slot-badge {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent-blue);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .file-name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-main);
+            font-family: 'JetBrains Mono', monospace;
+            word-break: break-all;
+        }
+
+        .file-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .card-buttons {
+            display: flex;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .card-btn {
+            flex: 1;
+            padding: 9px 12px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-download {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-green);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-download:hover:not(:disabled) {
+            background: var(--accent-green);
+            color: #fff;
+        }
+
+        .btn-download:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            border-color: var(--border-color);
+            color: var(--text-muted);
+            background: var(--bg-base);
+        }
+
+        .btn-copy {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent-blue);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-copy:hover:not(:disabled) {
+            background: var(--accent-blue);
+            color: #fff;
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            display: none;
+            flex-direction: column;
+            gap: 16px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .admin-panel.active {
+            display: flex;
+        }
+
+        .visitor-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .visitor-panel.hidden {
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .admin-slot-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            background-color: var(--bg-base);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 9px 12px;
+            color: var(--text-main);
+            font-size: 0.85rem;
+            outline: none;
+            transition: all 0.2s;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 8px var(--glow-blue);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background-color: var(--bg-card-hover);
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+
+        <!-- LOGIN SCREEN -->
+        <div class="login-screen" id="loginScreen">
+            <div class="login-card">
+                <div class="login-logo">NV</div>
+                <div>
+                    <h2 class="login-title">NOVA MULTI LINK</h2>
+                    <p class="login-subtitle">Silakan login sebagai Admin atau Guest</p>
+                </div>
+                
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="loginUser" placeholder="Masukkan username...">
+                </div>
+                
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPass" placeholder="Masukkan password...">
+                </div>
+                
+                <div class="error-msg" id="loginError">Username atau Password salah!</div>
+                
+                <button class="btn" onclick="handleAdminLogin()">Login Admin</button>
+                <button class="btn btn-secondary btn-guest-login" onclick="handleGuestLogin()">logging in by guest?</button>
+            </div>
+        </div>
+
+        <!-- MAIN APP WRAPPER -->
+        <div class="main-app-wrapper" id="mainAppWrapper">
+            <!-- Top Header -->
+            <header class="app-header">
+                <div class="logo-area">
+                    <div class="logo-icon">NV</div>
+                    <div class="logo-text">
+                        <h1>NOVA MULTI LINK</h1>
+                        <span>MediaFire Hub</span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <span class="role-badge" id="roleBadge">GUEST</span>
+                    <button class="icon-btn" onclick="handleLogout()" title="Keluar / Ganti Akun">🚪</button>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <main class="content-area">
+
+                <!-- Action Bar -->
+                <div class="action-bar">
+                    <button class="btn" onclick="copyAllLinks()">📋 Copy All Links</button>
+                    <button class="btn btn-secondary" id="adminToggleBtn" onclick="toggleAdminMode()" style="display: none;">⚙️ Mode Edit Admin</button>
+                </div>
+
+                <!-- VISITOR / GUEST PANEL (Hanya menampilkan slot terisi) -->
+                <div class="visitor-panel" id="visitorPanel">
+                    <!-- Di-render via JS -->
+                </div>
+
+                <!-- ADMIN EDIT PANEL (10 Slot Lengkap) -->
+                <div class="admin-panel" id="adminPanel">
+                    <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.4;">
+                        🛠️ Panel Admin: Anda dapat mengisi, mengubah, atau mengosongkan 10 slot link di bawah ini. Slot yang kosong otomatis disembunyikan dari pengunjung. Data tersimpan otomatis di LocalStorage.
+                    </div>
+                    <div id="adminSlotsContainer" style="display: flex; flex-direction: column; gap: 12px;">
+                        <!-- Di-render via JS -->
+                    </div>
+                </div>
+
+            </main>
+        </div>
+
+        <!-- Toast Notification -->
+        <div class="toast" id="toastMsg">Berhasil disalin ke clipboard!</div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Data Default 10 Slot sesuai permintaan
+        const defaultSlots = [
+            { name: "nova_helper.apk", desc: "Aplikasi helper sistem Nova", url: "https://www.mediafire.com/file/jur4v75pvmfk1bl/nova_helper.apk/file" },
+            { name: "mixer.zip", desc: "File audio mixer mod pack", url: "https://www.mediafire.com/file/4kek9273mas9p4y/mixer.zip/file" },
+            { name: "sound.zip", desc: "file sound system 18inch", url: "https://www.mediafire.com/file/jsbckezrjo0dwgj/kontol.zip/file" },
+            { name: "", desc: "", url: "" },
+            { name: "", desc: "", url: "" },
+            { name: "", desc: "", url: "" },
+            { name: "", desc: "", url: "" },
+            { name: "", desc: "", url: "" },
+            { name: "", desc: "", url: "" },
+            { name: "", desc: "", url: "" }
+        ];
+
+        let linksData = JSON.parse(localStorage.getItem('nova_mediafire_links_v2')) || defaultSlots;
+        let currentUserRole = null; // 'admin' atau 'guest'
+        let isAdminEditView = false;
+
+        function saveData() {
+            localStorage.setItem('nova_mediafire_links_v2', JSON.stringify(linksData));
+            renderUI();
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toastMsg');
+            toast.innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+
+        // Login Handlers
+        function handleAdminLogin() {
+            const user = document.getElementById('loginUser').value.trim();
+            const pass = document.getElementById('loginPass').value.trim();
+            const errorMsg = document.getElementById('loginError');
+
+            if (user === 'sidzz' && pass === 'sidzz132') {
+                currentUserRole = 'admin';
+                isAdminEditView = false;
+                initApp();
+                showToast("Login Admin Berhasil!");
+            } else {
+                errorMsg.style.display = 'block';
+            }
+        }
+
+        function handleGuestLogin() {
+            currentUserRole = 'guest';
+            isAdminEditView = false;
+            initApp();
+            showToast("Masuk sebagai Guest");
+        }
+
+        function handleLogout() {
+            currentUserRole = null;
+            document.getElementById('loginUser').value = '';
+            document.getElementById('loginPass').value = '';
+            document.getElementById('loginError').style.display = 'none';
+            document.getElementById('loginScreen').classList.remove('hidden');
+            document.getElementById('mainAppWrapper').classList.remove('active');
+            showToast("Berhasil Keluar");
+        }
+
+        function initApp() {
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('mainAppWrapper').classList.add('active');
+
+            const roleBadge = document.getElementById('roleBadge');
+            const adminToggleBtn = document.getElementById('adminToggleBtn');
+
+            if (currentUserRole === 'admin') {
+                roleBadge.innerText = "ADMIN";
+                roleBadge.className = "role-badge admin";
+                adminToggleBtn.style.display = "block";
+            } else {
+                roleBadge.innerText = "GUEST";
+                roleBadge.className = "role-badge guest";
+                adminToggleBtn.style.display = "none";
+            }
+            renderUI();
+        }
+
+        function toggleAdminMode() {
+            if (currentUserRole !== 'admin') return;
+            isAdminEditView = !isAdminEditView;
+            const visitorPanel = document.getElementById('visitorPanel');
+            const adminPanel = document.getElementById('adminPanel');
+            const adminToggleBtn = document.getElementById('adminToggleBtn');
+
+            if (isAdminEditView) {
+                visitorPanel.classList.add('hidden');
+                adminPanel.classList.add('active');
+                adminToggleBtn.innerText = "👁️ Lihat Tampilan Publik";
+            } else {
+                adminPanel.classList.remove('active');
+                visitorPanel.classList.remove('hidden');
+                adminToggleBtn.innerText = "⚙️ Mode Edit Admin";
+            }
+            renderUI();
+        }
+
+        function copyLink(url) {
+            if (!url) return;
+            navigator.clipboard.writeText(url).then(() => {
+                showToast("Link berhasil disalin!");
+            });
+        }
+
+        function copyAllLinks() {
+            const activeLinks = linksData.filter(slot => slot.url && slot.url.trim() !== "").map(slot => slot.url);
+            if (activeLinks.length === 0) {
+                showToast("Tidak ada link aktif untuk disalin!");
+                return;
+            }
+            const allText = activeLinks.join('\n');
+            navigator.clipboard.writeText(allText).then(() => {
+                showToast(`Berhasil menyalin ${activeLinks.length} link!`);
+            });
+        }
+
+        function updateSlot(index, field, value) {
+            linksData[index][field] = value;
+            saveData();
+        }
+
+        function renderUI() {
+            const visitorPanel = document.getElementById('visitorPanel');
+            const adminSlotsContainer = document.getElementById('adminSlotsContainer');
+
+            // 1. Render Visitor Panel (Hanya slot terisi)
+            visitorPanel.innerHTML = "";
+            const activeSlots = linksData.map((slot, originalIndex) => ({ ...slot, originalIndex })).filter(slot => slot.url && slot.url.trim() !== "");
+
+            if (activeSlots.length === 0) {
+                visitorPanel.innerHTML = `
+                    <div class="empty-state">
+                        <span>📂</span>
+                        <p>Belum ada link download aktif.</p>
+                        ${currentUserRole === 'admin' ? '<p style="font-size: 0.75rem;">Gunakan tombol "Mode Edit Admin" untuk menambah link.</p>' : ''}
+                    </div>
+                `;
+            } else {
+                activeSlots.forEach((slot) => {
+                    const card = document.createElement('div');
+                    card.className = 'download-card';
+                    card.innerHTML = `
+                        <div class="card-header-row">
+                            <span class="slot-badge">SLOT #${slot.originalIndex + 1}</span>
+                            <span style="font-size: 0.7rem; color: var(--text-muted);">MediaFire Ready</span>
+                        </div>
+                        <div>
+                            <div class="file-name">${slot.name || 'File Tanpa Nama'}</div>
+                            <div class="file-desc">${slot.desc || 'Tidak ada deskripsi tersedia.'}</div>
+                        </div>
+                        <div class="card-buttons">
+                            <a href="${slot.url}" target="_blank" class="card-btn btn-download">
+                                📥 Download
+                            </a>
+                            <button class="card-btn btn-copy" onclick="copyLink('${slot.url}')">
+                                📋 Copy Link
+                            </button>
+                        </div>
+                    `;
+                    visitorPanel.appendChild(card);
+                });
+            }
+
+            // 2. Render Admin Panel (10 Slot lengkap untuk diedit)
+            if (currentUserRole === 'admin') {
+                adminSlotsContainer.innerHTML = "";
+                linksData.forEach((slot, idx) => {
+                    const adminCard = document.createElement('div');
+                    adminCard.className = 'admin-slot-card';
+                    adminCard.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span class="slot-badge">SLOT ${idx + 1}</span>
+                            <span style="font-size: 0.7rem; color: ${slot.url ? 'var(--accent-green)' : 'var(--text-muted)'};">
+                                ${slot.url ? '● Terisi' : '○ Kosong'}
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label>Nama File</label>
+                            <input type="text" value="${slot.name}" placeholder="Contoh: app_v1.apk" oninput="updateSlot(${idx}, 'name', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Deskripsi File</label>
+                            <input type="text" value="${slot.desc}" placeholder="Contoh: Update terbaru..." oninput="updateSlot(${idx}, 'desc', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>URL MediaFire</label>
+                            <input type="text" value="${slot.url}" placeholder="https://www.mediafire.com/file/..." oninput="updateSlot(${idx}, 'url', this.value)">
+                        </div>
+                    `;
+                    adminSlotsContainer.appendChild(adminCard);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
